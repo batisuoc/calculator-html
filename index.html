@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Calculator</title>
+    <style>
+      .cal-container table {
+        margin: auto;
+        border: 1px solid #5c5958;
+        border-collapse: collapse;
+        width: 320px;
+      }
+      td {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        width: 25%;
+        height: 50px;
+        font-size: 2em;
+      }
+      td.operator {
+        background-color: #ff9f08;
+      }
+      td.other {
+        background-color: #6b6868;
+      }
+      td.main {
+        background-color: #6b6868;
+      }
+      input.answer {
+        background-color: #5c5958;
+        color: white;
+        width: 100%;
+        height: 100%;
+        border: #5c5958;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cal-container">
+      <table border="1">
+        <tr>
+          <td colspan="4">
+            <input class="answer" type="text" name="answer" />
+          </td>
+        </tr>
+        <tr>
+          <td class="other"></td>
+          <td class="other"></td>
+          <td class="other"></td>
+          <td class="operator">&divide;</td>
+        </tr>
+        <tr>
+          <td class="main"></td>
+          <td class="main"></td>
+          <td class="main"></td>
+          <td class="operator">&#215;</td>
+        </tr>
+        <tr>
+          <td class="main"></td>
+          <td class="main"></td>
+          <td class="main"></td>
+          <td class="operator">&ndash;</td>
+        </tr>
+        <tr>
+          <td class="main"></td>
+          <td class="main"></td>
+          <td class="main"></td>
+          <td class="operator">+</td>
+        </tr>
+        <tr>
+          <td class="main" colspan="2">0</td>
+          <td class="main">.</td>
+          <td class="operator">=</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
