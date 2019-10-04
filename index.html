@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Calculator</title>
     <style>
+      * {
+        box-sizing: border-box;
+      }
       .cal-container table {
         margin: auto;
-        border: 1px solid #5c5958;
         border-collapse: collapse;
         width: 300px;
       }
@@ -20,7 +22,7 @@
       td input {
         width: 100%;
         height: 100%;
-        color: white;
+        color: #e1e1e1;
         font-weight: bold;
         text-align: center;
         font-size: 25px;
@@ -39,20 +41,25 @@
       }
       input.answer {
         background-color: #5c5958;
-        color: white;
+        color: #e1e1e1;
         width: 100%;
         height: 100%;
-        border: #5c5958;
-        font-size: 2em;
+        font-size: 2.3em;
         text-align: right;
-        /* padding-right: 5px; */
+        border: none;
+        text-shadow: 0 0 0 gray;
+        border-radius: 5px 5px 0 0;
+        padding: 5px;
+      }
+      input.answer:focus {
+        outline: none;
       }
     </style>
   </head>
   <body>
     <div class="cal-container">
       <form name="calculator">
-        <table border="1">
+        <table>
           <tr>
             <td colspan="4">
               <input
@@ -199,15 +206,34 @@
               />
             </td>
             <td class="operator">
-              <input
-                type="button"
-                value="="
-                onclick="calculator.answer.value = eval(calculator.answer.value)"
-              />
+              <input type="button" value="=" onclick="calculate()" />
             </td>
           </tr>
         </table>
       </form>
     </div>
+
+    <script>
+      function calculate() {
+        var errorCount = 0;
+        var specialCharacters = /[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+        var operations = calculator.answer.value;
+        var operElements = operations.split("");
+        for (let i = 0; i < operElements.length; i++) {
+          if (
+            (specialCharacters.test(operElements[i]) &&
+              specialCharacters.test(operElements[i + 1])) ||
+            specialCharacters.test(operElements[operElements.length - 1])
+          ) {
+            alert("Wrong operation !!!");
+            calculator.answer.value = "";
+            errorCount++;
+          }
+        }
+        if (errorCount === 0) {
+          calculator.answer.value = eval(calculator.answer.value);
+        }
+      }
+    </script>
   </body>
 </html>
